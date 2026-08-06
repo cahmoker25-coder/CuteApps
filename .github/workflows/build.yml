@@ -1,37 +1,35 @@
 name: Build APK
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: temurin
+          java-version: 17
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Auto-download Gradle Wrapper JAR if missing
-        run: |
-          mkdir -p gradle/wrapper
-          if [ ! -f "gradle/wrapper/gradle-wrapper.jar" ]; then
-            curl -L https://raw.githubusercontent.com/gradle/gradle/v8.0.0/subprojects/wrapper/src/intentions/gradle-wrapper.jar -o gradle/wrapper/gradle-wrapper.jar
-          fi
-
-      - name: Grant execute permission for gradlew
+      - name: Grant permission for Gradle
         run: chmod +x gradlew
 
-      - name: Build Debug APK with Gradle Wrapper
+      - name: Build Debug APK
         run: ./gradlew assembleDebug
 
-      - name: Upload APK Artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: CuteApps-Debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: APK-Debug
+          path: app/build/outputs/apk/debug/app-debug.apk          path: app/build/outputs/apk/debug/app-debug.apk
