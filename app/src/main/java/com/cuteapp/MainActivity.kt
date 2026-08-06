@@ -18,17 +18,17 @@ class MainActivity : AppCompatActivity() {
 
         // Cek apakah user sudah login atau belum
         if (auth.currentUser == null) {
-            // Jika belum login, arahkan kembali ke LoginActivity
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
             return
         }
 
-        // Tombol menuju fitur cari teman
+        // Tombol menuju fitur cari teman (langsung dipasang otomatis ke SearchActivity)
         val btnCariTeman = findViewById<Button>(R.id.btn_cari_teman)
         btnCariTeman.setOnClickListener {
-            // TODO: Buka halaman pencarian username teman
+            val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
         }
     }
 }
