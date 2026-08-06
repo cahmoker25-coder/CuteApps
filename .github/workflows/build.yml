@@ -17,8 +17,18 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Build Debug APK with Gradle
-        run: gradle assembleDebug
+      - name: Auto-download Gradle Wrapper JAR if missing
+        run: |
+          mkdir -p gradle/wrapper
+          if [ ! -f "gradle/wrapper/gradle-wrapper.jar" ]; then
+            curl -L https://raw.githubusercontent.com/gradle/gradle/v8.0.0/subprojects/wrapper/src/intentions/gradle-wrapper.jar -o gradle/wrapper/gradle-wrapper.jar
+          fi
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build Debug APK with Gradle Wrapper
+        run: ./gradlew assembleDebug
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
