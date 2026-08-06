@@ -21,6 +21,8 @@ jobs:
           echo "android.useAndroidX=true" > gradle.properties
           echo "android.enableJetifier=true" >> gradle.properties
           
+          # Bersihkan cache lama agar file XML terbaca dari awal
+          gradle clean
           gradle assembleDebug
 
       - name: Upload APK Artifact
