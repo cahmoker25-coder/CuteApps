@@ -18,6 +18,10 @@ jobs:
           echo "include ':app'" > settings.gradle
           echo "sdk.dir=$ANDROID_HOME" > local.properties
           
+          # Konfigurasi wajib AndroidX dan Jetifier untuk Gradle versi baru
+          echo "android.useAndroidX=true" > gradle.properties
+          echo "android.enableJetifier=true" >> gradle.properties
+          
           gradle assembleDebug
 
       - uses: actions/upload-artifact@v4
