@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "909460861572",
+    "firebase_url": "https://cuteapp-f4211-default-rtdb.firebaseio.com",
+    "project_id": "cuteapp-f4211",
+    "storage_bucket": "cuteapp-f4211.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909460861572:android:3fea8a7a6d21109b4088d1",
+        "android_client_info": {
+          "package_name": "com.cuteapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLXV1YuCIkpofhEoWkV_5wJx2FGOw5rb8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
