@@ -16,6 +16,14 @@ jobs:
 
       - name: Build Debug APK
         run: |
+          # Buat struktur direktori standar Android dengan benar
+          mkdir -p app/src/main/java app/src/main/res/layout
+          
+          # Salin file XML layout langsung dari folder res utama repository ke folder build
+          cp -r res/* app/src/main/res/ 2>/dev/null || true
+          cp -r src/* app/src/main/java/ 2>/dev/null || true
+          cp -r AndroidManifest.xml app/src/main/ 2>/dev/null || true
+          
           echo "include ':app'" > settings.gradle
           echo "sdk.dir=$ANDROID_HOME" > local.properties
           echo "android.useAndroidX=true" > gradle.properties
